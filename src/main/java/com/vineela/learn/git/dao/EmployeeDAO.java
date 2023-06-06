@@ -14,9 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class EmployeeDAO {
 	
-	public List<Employee> getEmployees() {
+	public List<Employee> getEmployees(List<Employee> employees) {
 		log.info("getEmployees method sart in Service ");
-		List<Employee> employees = new ArrayList<>();
+		//List<Employee> employees = new ArrayList<>();
 		
 		//Address a = new Address("15102 Summmer", "Wood Lane", 
 			//	"Alpharetta", "GA", "30005");

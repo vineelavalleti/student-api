@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vineela.learn.git.model.Employee;
@@ -44,6 +46,18 @@ public class EmployeeController {
 		// Call Service and get List of Employees
 		List<Employee> employees = empService.getHighPaidEmployees();
 		
+		log.info("Hello Method End in Controller");
+		
+		return employees;
+		
+	}
+	
+	@PostMapping("/emp")
+	public List<Employee> createEmp(@RequestBody Employee emp) {
+		
+		empService.createEmployee(emp);
+		//List<Employee> employees = empService.getEmployees();
+		List<Employee> employees = empService.totalEmplopyees;
 		log.info("Hello Method End in Controller");
 		
 		return employees;

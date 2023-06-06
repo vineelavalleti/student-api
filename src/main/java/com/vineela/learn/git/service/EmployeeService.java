@@ -17,12 +17,15 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class EmployeeService {
 	
+	
+	public static List<Employee> totalEmplopyees = new ArrayList<>();
+	
 	@Autowired
 	EmployeeDAO dao;
 	
 	public List<Employee> getEmployees() {
 		
-		List<Employee> totalEmplopyees = dao.getEmployees();
+		totalEmplopyees = dao.getEmployees(totalEmplopyees);
 	
 		
 		return totalEmplopyees;
@@ -32,9 +35,9 @@ public class EmployeeService {
 	public List<Employee> getHighPaidEmployees() {
 		List<Employee> highPaidEmps = new ArrayList<>();
 		
-		List<Employee> totalEmplopyees = dao.getEmployees();
+		List<Employee> totalEmplopyees1 = dao.getEmployees(totalEmplopyees);
 		
-		for (Employee emp : totalEmplopyees) {
+		for (Employee emp : totalEmplopyees1) {
 			if (emp.getSal()> 500) {
 				highPaidEmps.add(emp);
 			}
@@ -45,6 +48,12 @@ public class EmployeeService {
 		
 		
 	}
+	
+	public void createEmployee(Employee emp) {
+		totalEmplopyees.add(emp);
+	}
+	
+	
 	
 
 }
